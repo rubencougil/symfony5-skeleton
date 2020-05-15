@@ -3,7 +3,7 @@ default:
         default:
             contexts:
                 - Test\Application\Behat\Context\DemoContext
-            paths: ["../test/application/features"]
+            paths: ["../test/Application/Features"]
 
     extensions:
         FriendsOfBehat\SymfonyExtension: null
