@@ -1,0 +1,7 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    Test\Application\Behat\Context\:
+        resource: '../../test/application/behat/context/'
