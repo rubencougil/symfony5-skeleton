@@ -4,4 +4,4 @@ services:
         autoconfigure: true
 
     Test\Application\Behat\Context\:
-        resource: '../../test/application/behat/context/'
+        resource: '../../test/Application/Behat/Context/'
