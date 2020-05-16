@@ -5,9 +5,12 @@ declare(strict_types=1);
 namespace Test\Application\Behat\Context;
 
 use Behat\Behat\Context\Context;
+use Behat\Behat\Tester\Exception\PendingException;
 use Exception;
+use http\Exception\InvalidArgumentException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\KernelInterface;
 
 /**
@@ -46,6 +49,39 @@ final class DemoContext implements Context
     {
         if ($this->response === null) {
             throw new \RuntimeException('No response received');
+        }
+    }
+
+    /**
+     * @When I create request for a new user with name :name
+     * @param string $name
+     * @throws Exception
+     */
+    public function iCreateRequestForANewUserWithName(string $name): void
+    {
+        $request = Request::create('/users', Request::METHOD_POST, [], [], [], [], json_encode(['name' => $name]));
+        $this->response = $this->kernel->handle($request);
+        if ($this->response->getStatusCode() !== Response::HTTP_OK) {
+            throw new \RuntimeException("Status Code is {$this->response->getStatusCode()}");
+        }
+    }
+
+    /**
+     * @Then I should have a new user with name :name
+     * @param string $name
+     * @throws Exception
+     */
+    public function iShouldHaveANewUserWithName(string $name): void
+    {
+        $request = Request::create("/users/$name", Request::METHOD_GET);
+        $this->response = $this->kernel->handle($request);
+        if ($this->response->getStatusCode() !== Response::HTTP_OK) {
+            throw new \RuntimeException("User not found {$this->response->getStatusCode()}");
+        }
+
+        $resJson = json_decode($this->response->getContent(), true);
+        if ($resJson['name'] !== $name) {
+            throw new \RuntimeException("User not found {$this->response->getStatusCode()}");
         }
     }
 }
