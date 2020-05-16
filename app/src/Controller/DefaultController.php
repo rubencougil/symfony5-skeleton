@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use Module\Application\SayHello;
+use Module\SayHello;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 

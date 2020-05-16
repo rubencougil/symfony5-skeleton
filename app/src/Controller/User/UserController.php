@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\User;
 
-use Module\Application\CreateUser;
-use Module\Application\GetUser;
+use Module\User\Application\GetUser;
+use Module\User\Application\CreateUser;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 

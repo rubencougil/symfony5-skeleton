@@ -1,9 +1,9 @@
 <?php
 
-namespace Module\Application;
+namespace Module\User\Application;
 
-use Module\Domain\User;
-use Module\Domain\UserRepository;
+use Module\User\Domain\User;
+use Module\User\Domain\UserRepository;
 
 class GetUser
 {

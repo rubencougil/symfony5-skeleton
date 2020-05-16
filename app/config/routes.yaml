@@ -5,10 +5,10 @@ index:
 
 create_user:
     path: /users
-    controller: App\Controller\UserController::create
+    controller: App\Controller\User\UserController::create
     methods: ['POST']
 
 get_user:
     path: /users/{id}
-    controller: App\Controller\UserController::get
+    controller: App\Controller\User\UserController::get
     methods: ['GET']

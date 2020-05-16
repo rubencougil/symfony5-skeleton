@@ -1,6 +1,6 @@
 <?php
 
-namespace Module\Domain;
+namespace Module\User\Domain;
 
 interface UserRepository
 {
