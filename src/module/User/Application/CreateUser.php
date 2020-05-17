@@ -2,7 +2,6 @@
 
 namespace Module\User\Application;
 
-
 use Module\User\Domain\User;
 use Module\User\Domain\UserCreated;
 use Module\User\Domain\UserId;
